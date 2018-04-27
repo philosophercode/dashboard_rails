@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @category.category %>
+</p>
+
+<div class="container">
+    <% @websites.each do |website| %>
+
+          <div class="imageContainer flex-item">
+            <div class="overlay">
+              <div class="after"><%= link_to  "#{website.title}", website.url, class: "urlTitle" %></div>
+                <%= link_to 'Show', website, class: "crud" %>
+                <%= link_to 'Edit', edit_website_path(website), class: "crud" %>
+                <%= link_to 'Destroy', website, method: :delete, data: { confirm: 'Are you sure?' }, class: "crud" %>
+
+                <%= image_tag(website.urlImage, class: "imageURL") %>
+            </div>
+          </div>
+
+    <% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

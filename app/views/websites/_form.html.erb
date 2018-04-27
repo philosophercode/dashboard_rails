@@ -1,0 +1,42 @@
+<%= form_with(model: website, local: true) do |form| %>
+  <% if website.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(website.errors.count, "error") %> prohibited this website from being saved:</h2>
+
+      <ul>
+      <% website.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url,  required: true, id: :website_url %>
+  </div>
+
+  <!--<div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :website_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :urlImage %>
+    <%= form.text_field :urlImage, id: :website_urlImage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.text_field :category_id, id: :website_category_id %>
+  </div> -->
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= collection_select(:website, :category_id, Category.all, :id, :category, prompt: true) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

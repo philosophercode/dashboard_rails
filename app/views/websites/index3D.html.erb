@@ -1,0 +1,10 @@
+    <a-scene>
+        <% @websites.each do |website| %>
+        <a-assets>
+            <%= image_tag(website.urlImage, id: "imageURL") %>
+            <a-image src="<%%= #{website.title} %>" position="0 1 -1"></a-image>
+        </a-assets>
+        <% end %>
+
+        <a-sky color="lightblue"></a-sky>
+    </a-scene>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @website.url %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @website.title %>
+</p>
+
+<p>
+  <strong>Urlimage:</strong>
+  <%= @website.urlImage %>
+</p>
+
+<p>
+  <div class="imageContainer">
+    <%= image_tag(@website.urlImage, class: "imageURL") %>
+  </div>
+</p>
+
+
+
+
+<p>
+  <strong>Category:</strong>
+  <%= @website.category.category %>
+</p>
+
+<p>
+    <strong>USER:</strong>
+    <%= @website.user_id %>
+    <br>
+    <%= current_user.user_name %>
+</p>
+
+<%= link_to 'Edit', edit_website_path(@website) %> |
+<%= link_to 'Back', websites_path %>

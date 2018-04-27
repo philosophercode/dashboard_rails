@@ -1,0 +1,7 @@
+websites_screenshot:
+  # cron: "*/15 * * * *"
+  # class: "WebsitesScreenshotJob"
+  # queue: default
+  cron: "*/15 * * * *"
+  class: "ScreenshotterWorker"
+  queue: default

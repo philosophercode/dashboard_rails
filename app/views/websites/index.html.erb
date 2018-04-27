@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Websites</h1>
+
+<form action='/categories/' method='get'>
+  <%= collection_select(:category, :id, Category.all, :id, :category, prompt: true) %>
+  <input type="submit" value="GO"/>
+</form>
+
+<%= form_with model: @category do |form| %>
+  <%= collection_select(:website, :category_id, Category.all, :id, :category, prompt: true) %>
+<% end %>
+
+
+
+<br>
+
+<%= link_to 'Add Category', categories_path %>
+
+
+<div class="container">
+
+  <% @websites.each do |website| %>
+
+        <div class="imageContainer flex-item">
+          
+
+          <div class="overlay">
+            <div class="after"><%= link_to  "#{website.title}", website.url, class: "urlTitle" %></div>
+              <%= link_to 'Show', website, class: "crud" %>
+              <%= link_to 'Edit', edit_website_path(website), class: "crud" %>
+              <%= link_to 'Destroy', website, method: :delete, data: { confirm: 'Are you sure?' }, class: "crud" %>
+              
+              
+              <%= image_tag(website.urlImage, class: "imageURL") %>
+
+          </div>
+
+        </div>
+
+  <% end %>
+
+</div>
+
+
+<br>
+
+
+
+
+<%= link_to 'New Website', new_website_path %>
